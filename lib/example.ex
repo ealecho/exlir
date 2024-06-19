@@ -1,5 +1,5 @@
 
-
+require Integer
 defmodule Example do
   use Application
 
@@ -11,17 +11,16 @@ defmodule Example do
   end
 
   def main do
-    correct = :rand.uniform(11) -1
-    IO.puts(correct)
-    guess = IO.gets("Guess a number between 0 and 10: ") |> String.trim() |> Integer.parse()
-    case guess do
-      {result, _} ->
-        IO.puts("You guessed #{result}")
-        if result == correct do
-          IO.puts("You guessed correctly")
-        else
-          IO.puts("You guessed incorrectly")
-        end
-    end
+    grades = [25, 50, 75, 100]
+    # for n <- grades do
+    #   IO.puts("Grade #{n}")
+    # end
+    new = for n <- grades, do: n / 5
+    IO.inspect(new)
+    new = new ++ [125]
+    final = new ++ [150]
+    IO.inspect(final)
+    even = for n <- final, Integer.is_even(n), do: n
+    IO.inspect(even)
   end
 end
